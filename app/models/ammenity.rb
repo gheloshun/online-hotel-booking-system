@@ -1,0 +1,2 @@
+class Ammenity < ApplicationRecord
+end
