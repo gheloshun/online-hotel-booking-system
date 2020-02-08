@@ -1,1 +1,6 @@
-<%= @room.room_number %>
+<div class="row room-details-container>
+  <%= @room.room_number %>
+  <% (0...@room.images.count).each do |image| %>
+    <%= image_tag (@room.images[image]) %>
+  <% end %>
+</div>

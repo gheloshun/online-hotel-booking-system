@@ -3,7 +3,8 @@
     <div class="col s4">
       <div class="card">
         <div class="card-image">
-          <img src="images/sample-1.jpg">
+          <% image = room.images.first %>
+          <%= image_tag image %>
         </div>
         <div class="card-content">
           <h6><%= room.room_number %></h6>
