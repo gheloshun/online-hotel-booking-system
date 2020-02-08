@@ -33,24 +33,31 @@ RoomClass.create!(
   ammenity_id: 1
 )
 
-Room.create!(
-  [
-    {
-      room_number: "101",
-      room_rate: 850.00,
-      occupied: false,
-      max_capacity: 2,
-      hotel_id: 1,
-      room_class_id: 1
-    },
-    {
-      room_number: "102",
-      room_rate: 900.00,
-      occupied: false,
-      max_capacity: 2,
-      hotel_id: 1,
-      room_class_id: 1
-    }
-  ]
+if Room.count.zero?
+  room1 = Room.create!(
+    room_number: "101",
+    room_rate: 850.00,
+    occupied: false,
+    max_capacity: 2,
+    hotel_id: 1,
+    room_class_id: 1
+  )
+  room1.images.attach(io: File.open('/home/ghelo/Pictures/images/1.jpg'), filename: '1.jpg')
+  room1.images.attach(io: File.open('/home/ghelo/Pictures/images/2.jpg'), filename: '2.jpg')
+  room1.images.attach(io: File.open('/home/ghelo/Pictures/images/3.jpg'), filename: '3.jpg')
+  room1.images.attach(io: File.open('/home/ghelo/Pictures/images/4.jpg'), filename: '4.jpg')
 
-)
+  room2 = Room.create!(
+    room_number: "102",
+    room_rate: 900.00,
+    occupied: false,
+    max_capacity: 2,
+    hotel_id: 1,
+    room_class_id: 1
+  )
+  room2.images.attach(io: File.open('/home/ghelo/Pictures/images/5.jpg'), filename: '5.jpg')
+  room2.images.attach(io: File.open('/home/ghelo/Pictures/images/6.jpg'), filename: '6.jpg')
+  room2.images.attach(io: File.open('/home/ghelo/Pictures/images/7.jpg'), filename: '7.jpg')
+  room2.images.attach(io: File.open('/home/ghelo/Pictures/images/8.jpg'), filename: '8.jpg')
+  room2.images.attach(io: File.open('/home/ghelo/Pictures/images/9.jpg'), filename: '9.jpg')
+end
