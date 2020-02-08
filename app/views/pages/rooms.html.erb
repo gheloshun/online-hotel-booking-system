@@ -1,0 +1,18 @@
+<div class="row">
+  <% @rooms.each do |room| %>
+    <div class="col s4">
+      <div class="card">
+        <div class="card-image">
+          <img src="images/sample-1.jpg">
+        </div>
+        <div class="card-content">
+          <h6><%= room.room_number %></h6>
+          <p></p>
+        </div>
+        <div class="card-action">
+          <%= link_to "Book", "#", :class => "waves-effect waves-light btn red" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

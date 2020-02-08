@@ -34,10 +34,23 @@ RoomClass.create!(
 )
 
 Room.create!(
-  room_number: "101",
-  room_rate: 850.00,
-  occupied: true,
-  max_capacity: 2,
-  hotel_id: 1,
-  room_class_id: 1
+  [
+    {
+      room_number: "101",
+      room_rate: 850.00,
+      occupied: false,
+      max_capacity: 2,
+      hotel_id: 1,
+      room_class_id: 1
+    },
+    {
+      room_number: "102",
+      room_rate: 900.00,
+      occupied: false,
+      max_capacity: 2,
+      hotel_id: 1,
+      room_class_id: 1
+    }
+  ]
+
 )
