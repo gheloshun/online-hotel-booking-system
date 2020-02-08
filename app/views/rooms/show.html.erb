@@ -29,12 +29,7 @@
         </div>
       </div>
       <p class="book-details">
-        <select>
-          <option value="" disabled-content>Number of guest</option>
-            <% (1..@room.max_capacity).each do |max| %>
-              <option value="<%= max %>"><%= max %></option>
-            <% end %>
-        </select>
+        <%= f.select :number_of_guest, count_max_capacity %>
       </p>
 
       <div class="row book-details">
