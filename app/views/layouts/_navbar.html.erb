@@ -9,7 +9,7 @@
     <a href="#!" class="brand-logo">Logo</a>
     <ul class="right hide-on-med-and-down">
       <li><%= link_to "Home", root_path %></li>
-      <li><%= link_to "Rooms", rooms_path %></li>
+      <li><%= link_to "Rooms", all_rooms_path %></li>
       <% if user_signed_in? %>
         <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
       <% else %>

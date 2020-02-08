@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  get 'rooms/show'
+  resources :rooms
   root to: 'pages#index'
+  get '/all_rooms', to: 'pages#rooms'
   devise_for :users
 
-  get '/rooms', to: 'pages#rooms'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
