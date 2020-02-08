@@ -17,6 +17,30 @@
     <div class="row book-details">
       <%= number_to_currency_php(@room.room_rate) %>
     </div>
+    <%= form_for @booking do |f| %>
+      <div class="row book-details">
+        <div class="col l6">
+          <%= f.label "Check-in" %>
+          <%= f.text_field :time_in, class: "datepicker" %>
+        </div>
+        <div class="col l6">
+          <%= f.label "Check-out" %>
+          <%= f.text_field :time_in, class: "datepicker" %>
+        </div>
+      </div>
+      <p class="book-details">
+        <select>
+          <option value="" disabled-content>Number of guest</option>
+            <% (1..@room.max_capacity).each do |max| %>
+              <option value="<%= max %>"><%= max %></option>
+            <% end %>
+        </select>
+      </p>
+
+      <div class="row book-details">
+        <%= f.submit "Book", class: "waves-effect waves-light btn red" %>
+      </div>
+    <% end %>
   </div>
 </div>
 
@@ -24,5 +48,13 @@
   $('.carousel.carousel-slider').carousel({
     fullWidth: true,
     indicators: true
+  });
+
+  $(document).ready(function(){
+    $('.datepicker').datepicker();
+  });
+
+  $(document).ready(function(){
+    $('select').formSelect();
   });
 </script>

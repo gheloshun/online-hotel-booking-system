@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :rooms
+  resources :bookings
   root to: 'pages#index'
   get '/all_rooms', to: 'pages#rooms'
   devise_for :users
