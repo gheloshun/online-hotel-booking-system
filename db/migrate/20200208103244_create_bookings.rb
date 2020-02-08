@@ -4,7 +4,7 @@ class CreateBookings < ActiveRecord::Migration[6.0]
       t.date :date
       t.time :time_in
       t.time :time_out
-      t.float :total_bill
+      t.float :total_bill, default: 0.00
       t.references :user, null: false, foreign_key: true
       t.references :room, null: false, foreign_key: true
 
