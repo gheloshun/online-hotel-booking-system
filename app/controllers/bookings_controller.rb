@@ -8,6 +8,7 @@ class BookingsController < ApplicationController
     params[:booking][:room_id] = session[:room_id]
     @booking = Booking.create!(booking_params)
     if @booking.save
+      
     else
       render 'rooms/show'
     end

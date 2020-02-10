@@ -2,6 +2,7 @@
   <div class="row">
     <%= current_user.id %>
     <%= session[:room_id] %>
+    <%= compute_total %>
   </div>
   <div class="col l8">
     <div class="row room-details-container">
@@ -25,21 +26,44 @@
       <div class="row book-details">
         <div class="col l6">
           <%= f.label "Check-in" %>
-          <%= f.text_field :check_out, class: "datepicker" %>
+          <%= f.text_field :check_in, class: "datepicker_from" %>
         </div>
         <div class="col l6">
           <%= f.label "Check-out" %>
-          <%= f.text_field :check_in, class: "datepicker" %>
+          <%= f.text_field :check_out, class: "datepicker_to" %>
         </div>
       </div>
       <p class="book-details">
         <%= f.select :number_of_guest, count_max_capacity %>
       </p>
+      <div class="">
+      </div>
+      <div class="row book-details">
+        <div class="col l6 left">
+          <%= f.label :room_rate, current_room.room_rate, class: "room_rate" %> x <%= f.label :number_of_night, "0", class: "total_days" %>
+          <br>
+          Cleaning Fee
+          <br>
+          Service Fee
+          <br>
+          Total
+        </div>
+        <div class="col l6 right">
+          <%= f.label :sub_total, "0", class: "sub_total" %>
+          <br>
+          <%= f.label :cleaning_fee, current_room.cleaning_fee, class: "cleaning_fee" %>
+          <br>
+          <%= label :service_fee, current_room.service_fee, class: "service_fee" %>
+          <br>
+          <%= f.label :total_bill, compute_total, class: "total_bill" %>
+        </div>
 
+      </div>
       <div class="row book-details">
         <%= f.submit "Book", class: "waves-effect waves-light btn red" %>
       </div>
     <% end %>
+    <label id="total_days"></label>
   </div>
 </div>
 
@@ -50,10 +74,60 @@
   });
 
   $(document).ready(function(){
-    $('.datepicker').datepicker();
+    var today = new Date();
+    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+
+    $('.datepicker_to').datepicker({
+      minDate: new Date(date),
+      autoClose: true,
+      onSelect: function(){
+        var d1 = $('.datepicker_from').val();
+        var d2 = $('.datepicker_to').val();
+        var date1 = new Date(d1);
+        var date2 = new Date(d2);
+        var date1_ms = date1.getTime();
+        var date2_ms = date2.getTime();
+        var diff = date2_ms-date1_ms;
+        var days = diff/1000/60/60/24;
+        $('.total_days').text(days);
+
+        var roomRate = parseFloat($('.room_rate').text());
+        var numNight = parseFloat($('.total_days').text());
+        var cleanFee = parseFloat($('.cleaning_fee').text());
+        var serviceFee = parseFloat($('.service_fee').text());
+        var subTotal = parseFloat($('.sub_total').text());
+        var total = 0.00
+        subTotal = roomRate * numNight;
+        total = subTotal + cleanFee + serviceFee;
+
+        $('.sub_total').text(subTotal);
+        $('.total_bill').text(total);
+      }
+    });
+  });
+
+  $(document).ready(function(){
+    var today = new Date();
+    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    $('.datepicker_from').datepicker({
+      minDate: new Date(date),
+      autoClose: true,
+      onSelect: function(){
+        var d1 = $('.datepicker_from').val();
+        var d2 = $('.datepicker_to').val();
+        var date1 = new Date(d1);
+        var date2 = new Date(d2);
+        var date1_ms = date1.getTime();
+        var date2_ms = date2.getTime();
+        var diff = date2_ms-date1_ms;
+        var days = diff/1000/60/60/24;
+        $('#total_days').text(days);
+      }
+    });
   });
 
   $(document).ready(function(){
     $('select').formSelect();
   });
+
 </script>

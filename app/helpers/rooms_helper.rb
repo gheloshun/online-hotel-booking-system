@@ -13,8 +13,25 @@ module RoomsHelper
     return arr
   end
 
+  def get_room_cleaning_fee
+
+  end
+
+  def get_room_service_fee
+    @room = Room.find(current_room.id)
+    return @room.service_fee
+  end
+
+  def compute_total
+    @room = Room.find(current_room.id)
+    room_rate = @room.room_rate
+    service_fee = @room.service_fee
+    cleaning_fee = @room.cleaning_fee
+    return room_rate + service_fee + cleaning_fee
+  end
+
   def current_room
-    session[:room_id]
+    return Room.find(session[:room_id])
   end
 
 end
