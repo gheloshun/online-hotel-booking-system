@@ -13,4 +13,8 @@ module RoomsHelper
     return arr
   end
 
+  def current_room
+    session[:room_id]
+  end
+
 end

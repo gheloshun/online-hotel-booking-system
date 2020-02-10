@@ -43,9 +43,8 @@ ActiveRecord::Schema.define(version: 2020_02_08_191831) do
   end
 
   create_table "bookings", force: :cascade do |t|
-    t.date "date"
-    t.time "time_in"
-    t.time "time_out"
+    t.date "check_in"
+    t.date "check_out"
     t.float "total_bill", default: 0.0
     t.bigint "user_id", null: false
     t.bigint "room_id", null: false
