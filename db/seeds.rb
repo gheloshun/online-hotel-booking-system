@@ -40,7 +40,9 @@ if Room.count.zero?
     occupied: false,
     max_capacity: 2,
     hotel_id: 1,
-    room_class_id: 1
+    room_class_id: 1,
+    cleaning_fee: 398.00,
+    service_fee: 257.00
   )
   room1.images.attach(io: File.open('/home/ghelo/Pictures/images/1.jpg'), filename: '1.jpg')
   room1.images.attach(io: File.open('/home/ghelo/Pictures/images/2.jpg'), filename: '2.jpg')
@@ -53,7 +55,9 @@ if Room.count.zero?
     occupied: false,
     max_capacity: 2,
     hotel_id: 1,
-    room_class_id: 1
+    room_class_id: 1,
+    cleaning_fee: 398.00,
+    service_fee: 257.00
   )
   room2.images.attach(io: File.open('/home/ghelo/Pictures/images/5.jpg'), filename: '5.jpg')
   room2.images.attach(io: File.open('/home/ghelo/Pictures/images/6.jpg'), filename: '6.jpg')
