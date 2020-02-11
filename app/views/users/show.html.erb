@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col l4">
+      <section>
+        <h1 class="center-align">
+          <% if current_user.image.attached? %>
+            <%= image_tag current_user.display_avatar, class: "profile-image responsive-img circle z-depth-5" %>
+          <% else %>
+            <%= image_tag "blank_image", class: "profile-image responsive-img circle z-depth-5 center"%>
+          <% end %>
+        </h1>
+        <h6 class="center-align">
+          <%= current_user.first_name %> <%= current_user.last_name %>
+        </h6>
+      </section>
+  </div>
+  <div class="col l8 profile-right-content">
+    <h3 class="">Hi, I'm <%= current_user.first_name %> <%= current_user.last_name %></h3><br>
+    Joined in <%= current_user.created_at.strftime("%Y") %> | <%= link_to "Edit Profile", edit_user_registration_path %>
+    <hr>
+    <% @bookings.each do |booking| %>
+      <div class="card">
+        <div class="card-image waves-effect waves-block waves-light">
+          <%= image_tag Room.find(booking.room_id).images.first %>
+        </div>
+        <div class="card-content">
+          <h6></h6>
+          <span class="card-title activator grey-text text-darken-4"><%= Room.find(booking.room_id).room_number %>
+            <i class="material-icons right">payment</i></span>
+          <p><%= booking.check_in.strftime("%b %d, %Y") %> - <%= booking.check_out.strftime("%b %d, %Y") %> |
+            <%= to_currency_php(booking.total_bill) %></p>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">Upload Deposit Slip<i class="material-icons right">close</i></span>
+          <%= form_for @booking do |f| %>
+
+          <% %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
