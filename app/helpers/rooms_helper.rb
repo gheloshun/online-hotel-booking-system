@@ -34,4 +34,14 @@ module RoomsHelper
     return Room.find(session[:room_id])
   end
 
+  def get_blocked_date
+    blocked_dates = []
+    @booking = Booking.all
+    @booking.each do |book|
+      blocked_dates.push(book.check_in)
+      blocked_dates.push(book.check_out)
+    end
+    return blocked_dates
+  end
+
 end
