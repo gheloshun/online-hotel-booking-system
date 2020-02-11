@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'billings/new'
   resources :rooms
   resources :bookings
   root to: 'pages#index'
