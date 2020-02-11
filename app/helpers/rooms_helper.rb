@@ -1,7 +1,7 @@
 module RoomsHelper
 
-  def number_to_currency_php(amount)
-    number_to_currency(amount, :unit => "₱ ", :separator => ".", :delimiter => ",")
+  def to_two_decimal(amount)
+    number_with_precision(amount, precision: 2)
   end
 
   def count_max_capacity
