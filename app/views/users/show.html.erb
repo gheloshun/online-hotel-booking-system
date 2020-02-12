@@ -18,6 +18,7 @@
     <h3 class="">Hi, I'm <%= current_user.first_name %> <%= current_user.last_name %></h3><br>
     Joined in <%= current_user.created_at.strftime("%Y") %> | <%= link_to "Edit Profile", edit_user_registration_path %>
     <hr>
+    <h6>Pending Bookings (For payment)</h6>
     <% @bookings.each do |booking| %>
     <% session[:book_id] = booking.id %>
       <div class="card">
@@ -26,7 +27,7 @@
         </div>
         <div class="card-content">
           <h6></h6>
-          <span class="card-title activator grey-text text-darken-4"><%= Room.find(booking.room_id).room_number %> <%= booking.id %>
+          <span class="card-title activator grey-text text-darken-4"><%= Room.find(booking.room_id).room_name %>
             <i class="material-icons right">payment</i></span>
           <p><%= booking.check_in.strftime("%b %d, %Y") %> - <%= booking.check_out.strftime("%b %d, %Y") %> |
             <%= to_currency_php(booking.total_bill) %></p>
