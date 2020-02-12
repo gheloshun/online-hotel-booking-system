@@ -5,7 +5,7 @@ class PagesController < ApplicationController
   end
 
   def rooms
-    @rooms = Room.where(published: true)
+    @rooms = Room.where(published: true).paginate(page: params[:page], per_page: 9)
   end
 
 end

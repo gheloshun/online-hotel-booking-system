@@ -1,3 +1,12 @@
+<% provide(:title, "All Rooms") %>
+<br>
+<div class="row">
+  <h5>Enjoy your vacation with one of our finest rooms</h5>
+</div>
+<hr>
+<div class="center">
+  <%= will_paginate @rooms %>
+</div>
 <div class="row">
   <% @rooms.each do |room| %>
     <div class="col s4">
@@ -16,4 +25,7 @@
       </div>
     </div>
   <% end %>
+</div>
+<div class="center">
+  <%= will_paginate @rooms %>
 </div>

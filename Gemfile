@@ -7,6 +7,10 @@ gem 'devise'
 
 gem 'rails_admin', '~> 2.0'
 
+#pagination
+gem 'will_paginate', '3.1.8'
+gem 'will_paginate-materialize', git: 'https://github.com/mldoscar/will_paginate-materialize', branch: 'master'
+
 #image image_processing
 gem 'image_processing', '1.9.3'
 gem 'mini_magick', '4.9.5'
