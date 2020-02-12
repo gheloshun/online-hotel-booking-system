@@ -1,3 +1,4 @@
+<% provide(:title, "User's Profile") %>
 <div class="row">
   <div class="col l4">
       <section>
@@ -18,22 +19,25 @@
     Joined in <%= current_user.created_at.strftime("%Y") %> | <%= link_to "Edit Profile", edit_user_registration_path %>
     <hr>
     <% @bookings.each do |booking| %>
+    <% session[:book_id] = booking.id %>
       <div class="card">
         <div class="card-image waves-effect waves-block waves-light">
           <%= image_tag Room.find(booking.room_id).images.first %>
         </div>
         <div class="card-content">
           <h6></h6>
-          <span class="card-title activator grey-text text-darken-4"><%= Room.find(booking.room_id).room_number %>
+          <span class="card-title activator grey-text text-darken-4"><%= Room.find(booking.room_id).room_number %> <%= booking.id %>
             <i class="material-icons right">payment</i></span>
           <p><%= booking.check_in.strftime("%b %d, %Y") %> - <%= booking.check_out.strftime("%b %d, %Y") %> |
             <%= to_currency_php(booking.total_bill) %></p>
         </div>
         <div class="card-reveal">
           <span class="card-title grey-text text-darken-4">Upload Deposit Slip<i class="material-icons right">close</i></span>
-          <%= form_for @booking do |f| %>
-
-          <% %>
+          <%= form_for booking, :url => url_for(:controller => 'bookings', :action => 'update') do |f| %>
+            <%= f.label :images %>
+            <%= f.file_field :images, multiple: true %>
+            <%= f.submit "Upload" %>
+          <% end %>
         </div>
       </div>
     <% end %>

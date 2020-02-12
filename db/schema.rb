@@ -52,12 +52,13 @@ ActiveRecord::Schema.define(version: 2020_02_10_035427) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "number_of_guest", default: 0
     t.boolean "confirmed", default: false
-    t.boolean "paid", default: false
+    t.boolean "upload_bank_slip", default: false
     t.integer "number_of_night", default: 0
     t.float "cleaning_fee", default: 0.0
     t.float "service_fee", default: 0.0
     t.float "sub_total", default: 0.0
     t.float "room_rate", default: 0.0
+    t.string "status", default: "Reserve"
     t.index ["room_id"], name: "index_bookings_on_room_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
