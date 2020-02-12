@@ -1,22 +1,50 @@
 <div class="row">
   <div class="col l8">
     <div class="row room-details-container">
-      <%= @room.room_number %>
+      <h5><%= @room.room_name %></h5>
+      <h6><%= to_currency_php(@room.room_rate) %>/night</h6>
+      <br>
       <div class="carousel carousel-slider center">
         <% (0...@room.images.count).each do |image| %>
         <div class="carousel-item">
           <div class="row">
-            <%= image_tag @room.images[image] %>
+            <%= image_tag(@room.display_image(image)) %>
           </div>
         </div>
         <% end %>
       </div>
+      <br>
+      <%= @room_class.room_info %>
+      <br>
+      <hr>
+      <h6>Room Components</h6>
+      <strong>Bedroom</strong><br>
+      <% @room_class.bedroom_contents.each do |bedroom| %>
+        - <%= bedroom %><br>
+      <% end %>
+      <br>
+      <strong>Living Room</strong><br>
+      <% @room_class.living_room_contents.each do |living_room| %>
+        - <%= living_room %><br>
+      <% end %>
+      <br>
+      <strong>Kitchen</strong><br>
+      <% @room_class.kitchen_contents.each do |kitchen| %>
+        - <%= kitchen %><br>
+      <% end %>
+      <br>
+      <strong>Balcony</strong><br>
+      <% @room_class.balcony_contents.each do |balcony| %>
+        - <%= balcony %><br>
+      <% end %>
+      <br><hr>
+      <h6>Ammenities</h6>
+      <% @ammenities.ammenities.each do |ammenity| %>
+        - <%= ammenity %><br>
+      <% end %>
     </div>
   </div>
   <div class="col l4">
-    <div class="row book-details">
-      <%= to_two_decimal(@room.room_rate) %>
-    </div>
     <%= form_for @booking do |f| %>
       <div class="row book-details">
         <div class="col l6">

@@ -4,6 +4,9 @@
 </div>
 <hr>
 <div class="row">
+  <div class="row">
+    <h5><%= @room.room_name %></h5>
+  </div>
   <div class="col l6">
     <%= image_tag @room.images.first, class: "billing-image" %>
   </div>
@@ -59,7 +62,6 @@
               <%= form_for @booking, :method => :put do |f| %>
                 <%= f.submit "Reserve", class: "waves-effect waves-light btn red" %>
               <% end %>
-              <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
             </div>
           </div>
         </li>

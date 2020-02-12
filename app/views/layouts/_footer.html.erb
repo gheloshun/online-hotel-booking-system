@@ -1,0 +1,31 @@
+<footer class="page-footer light-blue">
+  <div class="container">
+    <div class="row">
+      <div class="col l8 s12">
+        <h5 class="white-text">About us</h5>
+        <p class="col l4 offset-s12 s12">David Regency Hotel is a perfect venue for a comfortable stay as well as business meetings, conferences and trainings.</p>
+      </div>
+      <div class="col l4 offset-s12 s12">
+        <h5 class="white-text">Services</h5>
+        <ul>
+          <li><%= link_to "Home", root_path, :class => "grey-text text-lighten-3" %></li>
+          <li><%= link_to "Rooms", all_rooms_path, :class => "grey-text text-lighten-3" %></li>
+          <% if user_signed_in? %>
+            <li><%= link_to "My Profile", current_user, :class => "grey-text text-lighten-3" %></li>
+            <li><%= link_to "Edit Profile", edit_user_registration_path, :class => "grey-text text-lighten-3" %></li>
+            <li><%= link_to "Logout", destroy_user_session_path, :class => "grey-text text-lighten-3" %></li>
+          <% else %>
+            <li><%= link_to "Login", new_session_path(:user), :class => "grey-text text-lighten-3" %></li>
+            <li><%= link_to "Signup", new_user_registration_path, :class => "grey-text text-lighten-3" %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright white">
+    <div class="container black-text">
+      © 2020 Online Hotel Booking Web App, All rights reserved
+      <%= link_to "Some Link", "#", :class => "black-text right" %>
+    </div>
+  </div>
+</footer>

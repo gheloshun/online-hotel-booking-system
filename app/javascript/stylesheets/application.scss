@@ -1,5 +1,12 @@
 @import "materialize-css/dist/css/materialize";
 
+/* index page */
+
+.hotel-logo {
+  height: 10px;;
+  width: 10px;
+}
+
 /* room details*/
 
 .room-details-container {
@@ -34,4 +41,11 @@
 
 .profile-right-content {
   padding-left: 20px;
+}
+
+/* pages all rooms */
+
+.card-image {
+  width: 300px;
+  height: 180px;
 }

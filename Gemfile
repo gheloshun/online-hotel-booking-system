@@ -7,6 +7,10 @@ gem 'devise'
 
 gem 'rails_admin', '~> 2.0'
 
+#image image_processing
+gem 'image_processing', '1.9.3'
+gem 'mini_magick', '4.9.5'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 # Use postgresql as the database for Active Record

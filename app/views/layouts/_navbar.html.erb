@@ -6,8 +6,8 @@
   <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
 </ul>
 <nav>
-  <div class="nav-wrapper">
-    <a href="#!" class="brand-logo">Logo</a>
+  <div class="nav-wrapper light-blue">
+    <%= link_to image_tag("hotel-logo.png", size: 64), root_path, :class => "hotel-logo" %>
     <ul class="right hide-on-med-and-down">
       <li><%= link_to "Home", root_path %></li>
       <li><%= link_to "Rooms", all_rooms_path %></li>

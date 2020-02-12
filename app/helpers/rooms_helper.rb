@@ -4,6 +4,10 @@ module RoomsHelper
     number_with_precision(amount, precision: 2)
   end
 
+  def to_currency_php(amount)
+    number_to_currency(amount, :unit => "₱", :separator => ".", :delimeter => ",")
+  end
+
   def count_max_capacity
     @room = Room.find(params[:id])
     arr = []
