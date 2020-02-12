@@ -64,22 +64,22 @@
       <div class="row book-details">
         <div class="col l6 left">
           <%= f.label :room_rate %>
-          <%= f.text_field :room_rate, value: current_room.room_rate, class: "room_rate" %>
+          <%= f.text_field :room_rate, value: current_room.room_rate, class: "room_rate", readonly: true %>
           <br>
           <%= f.label :number_of_night %>
-          <%= f.text_field :number_of_night, class: "total_days" %>
+          <%= f.text_field :number_of_night, class: "total_days", readonly: true %>
           <br>
           <%= f.label :sub_total %>
-          <%= f.text_field :sub_total, value: 0, class: "sub_total" %>
+          <%= f.text_field :sub_total, value: 0, class: "sub_total", readonly: true %>
           <br>
           <%= f.label :cleaning_fee %>
-          <%= f.text_field :cleaning_fee, value: current_room.cleaning_fee, class: "cleaning_fee" %>
+          <%= f.text_field :cleaning_fee, value: current_room.cleaning_fee, class: "cleaning_fee", readonly: true %>
           <br>
           <%= f.label :service_fee %>
-          <%= f.text_field :service_fee, value: current_room.service_fee, class: "service_fee" %>
+          <%= f.text_field :service_fee, value: current_room.service_fee, class: "service_fee", readonly: true %>
           <br>
           <%= f.label :total_bill %>
-          <%= f.text_field :total_bill, class: "total_bill" %>
+          <%= f.text_field :total_bill, class: "total_bill", readonly: true %>
         </div>
 
       </div>
@@ -132,6 +132,7 @@
   $(document).ready(function(){
     var today = new Date();
     var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+
     $('.datepicker_from').datepicker({
       minDate: new Date(date),
       autoClose: true,
@@ -145,6 +146,18 @@
         var diff = date2_ms-date1_ms;
         var days = diff/1000/60/60/24;
         $('#total_days').text(days);
+
+        var roomRate = parseFloat($('.room_rate').val());
+        var numNight = parseFloat($('.total_days').val());
+        var cleanFee = parseFloat($('.cleaning_fee').val());
+        var serviceFee = parseFloat($('.service_fee').val());
+        var subTotal = parseFloat($('.sub_total').val());
+        var total = 0.00
+        subTotal = roomRate * numNight;
+        total = subTotal + cleanFee + serviceFee;
+
+        $('.sub_total').val(subTotal.toFixed(2));
+        $('.total_bill').val(total.toFixed(2));
       }
     });
   });
