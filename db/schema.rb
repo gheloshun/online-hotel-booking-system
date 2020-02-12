@@ -100,8 +100,10 @@ ActiveRecord::Schema.define(version: 2020_02_10_035427) do
     t.bigint "room_class_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "room_name"
     t.float "cleaning_fee", default: 0.0
     t.float "service_fee", default: 0.0
+    t.boolean "published", default: true
     t.index ["hotel_id"], name: "index_rooms_on_hotel_id"
     t.index ["room_class_id"], name: "index_rooms_on_room_class_id"
   end
