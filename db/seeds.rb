@@ -1,9 +1,23 @@
 User.create!(
-  first_name: "Example",
-  last_name: "User",
-  birthdate: "October 20, 1991",
-  email: "user@example.com",
-  password: "foobar"
+  [
+    {
+      first_name: "Example",
+      last_name: "User",
+      birthdate: "October 20, 1991",
+      email: "user@example.com",
+      password: "foobar",
+      admin: false
+    },
+    {
+      first_name: "Example",
+      last_name: "Admin",
+      birthdate: "November 21, 1991",
+      email: "admin@example.com",
+      password: "foobar",
+      admin: true
+    }
+  ]
+
 )
 
 HotelContact.create!(

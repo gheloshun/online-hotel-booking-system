@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-
+  before_action :authenticate_user!
   def new
   end
 
@@ -13,7 +13,7 @@ class BookingsController < ApplicationController
       @booking.update_attribute(:upload_bank_slip, true)
       @booking.update_attribute(:status, "Pending")
       @booking.images.attach(params[:booking][:images])
-      flash[:success] = "Thank you for choosing us. Please wait for the hotel itenerary from our administrator."
+      flash[:success] = "Thank you for choosing us.  Please wait for the hotel itenerary from our administrator."
       redirect_to current_user
     else
       @booking = Booking.find(params[:id])
