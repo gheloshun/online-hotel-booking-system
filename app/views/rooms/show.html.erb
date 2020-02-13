@@ -1,5 +1,7 @@
 <div class="row">
   <div class="col l8">
+    <div class="row">
+    </div>
     <div class="row room-details-container">
       <h5><%= @room.room_name %></h5>
       <h6><%= to_currency_php(@room.room_rate) %>/night</h6>
@@ -99,10 +101,25 @@
   $(document).ready(function(){
     var today = new Date();
     var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-
     $('.datepicker_to').datepicker({
       minDate: new Date(date),
       autoClose: true,
+      disableDayFn: function (date) {
+        var disabledDays = <%= get_blocked_date.inspect.html_safe %>;
+      //  var disabledDays = ['20/02/2020', '21/02/2020', '22/02/2020', '23/02/2020'];
+        var DD = ('0' + date.getDate()).slice(-2);
+        var MM = ('0' + (date.getMonth() + 1)).slice(-2);
+        var YYYY = date.getFullYear();
+
+        var YYYYDDMM = YYYY + '-' + MM + '-' + DD;
+
+        for(i = 0; i < disabledDays.length; i++){
+          if(YYYYDDMM == disabledDays[i])
+          {
+            return date;
+          }
+        }
+      },
       onSelect: function(){
         var d1 = $('.datepicker_from').val();
         var d2 = $('.datepicker_to').val();
@@ -136,28 +153,26 @@
     $('.datepicker_from').datepicker({
       minDate: new Date(date),
       autoClose: true,
+      disableDayFn: function (date) {
+        var disabledDays = <%= get_blocked_date.inspect.html_safe %>;
+      //  var disabledDays = ['20/02/2020', '21/02/2020', '22/02/2020', '23/02/2020'];
+        var DD = ('0' + date.getDate()).slice(-2);
+        var MM = ('0' + (date.getMonth() + 1)).slice(-2);
+        var YYYY = date.getFullYear();
+
+        var YYYYDDMM = YYYY + '-' + MM + '-' + DD;
+
+        for(i = 0; i < disabledDays.length; i++){
+          if(YYYYDDMM == disabledDays[i])
+          {
+            return date;
+          }
+        }
+      },
       onSelect: function(){
-        var d1 = $('.datepicker_from').val();
-        var d2 = $('.datepicker_to').val();
-        var date1 = new Date(d1);
-        var date2 = new Date(d2);
-        var date1_ms = date1.getTime();
-        var date2_ms = date2.getTime();
-        var diff = date2_ms-date1_ms;
-        var days = diff/1000/60/60/24;
-        $('#total_days').text(days);
-
-        var roomRate = parseFloat($('.room_rate').val());
-        var numNight = parseFloat($('.total_days').val());
-        var cleanFee = parseFloat($('.cleaning_fee').val());
-        var serviceFee = parseFloat($('.service_fee').val());
-        var subTotal = parseFloat($('.sub_total').val());
-        var total = 0.00
-        subTotal = roomRate * numNight;
-        total = subTotal + cleanFee + serviceFee;
-
-        $('.sub_total').val(subTotal.toFixed(2));
-        $('.total_bill').val(total.toFixed(2));
+        $('.sub_total').val(0.00);
+        $('.number_of_night').val(0);
+        $('.total_bill').val(0.00);
       }
     });
   });

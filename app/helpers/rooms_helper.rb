@@ -17,10 +17,6 @@ module RoomsHelper
     return arr
   end
 
-  def get_room_cleaning_fee
-
-  end
-
   def get_room_service_fee
     @room = Room.find(current_room.id)
     return @room.service_fee
@@ -40,10 +36,15 @@ module RoomsHelper
 
   def get_blocked_date
     blocked_dates = []
-    @booking = Booking.all
-    @booking.each do |book|
-      blocked_dates.push(book.check_in)
-      blocked_dates.push(book.check_out)
+    @bookings = Booking.where(room_id: session[:room_id], upload_bank_slip: true)
+    #@bookings = Booking.where(room_id: session[:room_id], paid: true)
+    @bookings.each do |book|
+      diff_days = ((book.check_out - book.check_in).to_i)
+      orig_date = book.check_in
+      diff_days.times do
+        blocked_dates.push(orig_date.strftime("%Y-%m-%d"))
+        orig_date = orig_date + 1.day
+      end
     end
     return blocked_dates
   end

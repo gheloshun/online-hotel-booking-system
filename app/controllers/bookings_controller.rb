@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def new
   end
 
@@ -21,7 +21,7 @@ class BookingsController < ApplicationController
       @booking.update_attribute(:confirmed, true)
       @booking.update_attribute(:status, "Unpaid")
       flash[:success] = "The selected dates are temporarily blocked. To secure your booking please settle the payment until tommorrow."
-      redirect_to root_path
+      redirect_to current_user
     end
 
   end
@@ -29,11 +29,12 @@ class BookingsController < ApplicationController
   def create
     params[:booking][:user_id] = current_user.id
     params[:booking][:room_id] = session[:room_id]
-    @booking = Booking.create!(booking_params)
+    @booking = Booking.create(booking_params)
     if @booking.save
       redirect_to @booking
     else
-      render 'rooms/show'
+      flash[:session] = "* Please select a proper date"
+      redirect_to room_path(session[:room_id])
     end
   end
 

@@ -10,4 +10,6 @@ class RoomsController < ApplicationController
     @ammenities = Ammenity.find(@room_class.ammenity_id)
     session[:room_id] = @room.id
   end
+
+
 end
