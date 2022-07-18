@@ -1,0 +1,60 @@
+@import "materialize-css/dist/css/materialize";
+
+/* index page */
+
+.hotel-logo {
+  height: 10px;;
+  width: 10px;
+}
+
+/* room details*/
+
+.room-details-container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.book-details {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding-left: 50px;
+}
+
+/* Billing Information */
+
+.billing-image {
+  width: 350px;
+  height: 230px;
+}
+
+.bank-logo {
+  height: 80px;
+  width: 80px;
+}
+
+/* User Profile */
+
+.profile-image {
+  width: 200px;
+  height: 200px;
+}
+
+.profile-right-content {
+  padding-left: 20px;
+}
+
+/* pages all rooms */
+
+.rooms-card-image {
+  width: 300px;
+  height: 180px;
+}
+
+/* devise styling */
+.error-message {
+  color: red;
+}
+
+.alert{
+  color: red;
+}

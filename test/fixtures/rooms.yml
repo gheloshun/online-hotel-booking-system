@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  room_number: MyString
+  room_rate: 1.5
+  occupied: false
+  max_capacity: 1
+  hotel: one
+  room_class: one
+
+two:
+  room_number: MyString
+  room_rate: 1.5
+  occupied: false
+  max_capacity: 1
+  hotel: two
+  room_class: two

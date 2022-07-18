@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2020-02-08
+  time_in: 2020-02-08 18:32:45
+  time_out: 2020-02-08 18:32:45
+  total_bill: 1.5
+  user: one
+  room: one
+
+two:
+  date: 2020-02-08
+  time_in: 2020-02-08 18:32:45
+  time_out: 2020-02-08 18:32:45
+  total_bill: 1.5
+  user: two
+  room: two

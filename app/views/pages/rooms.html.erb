@@ -1,0 +1,31 @@
+<% provide(:title, "All Rooms") %>
+<br>
+<div class="row">
+  <h5>Enjoy your vacation with one of our finest rooms</h5>
+</div>
+<hr>
+<div class="center">
+  <%= will_paginate @rooms %>
+</div>
+<div class="row">
+  <% @rooms.each do |room| %>
+    <div class="col s4">
+      <div class="card">
+        <div class="card-image">
+          <% image = room.images.first %>
+          <%= image_tag image, :class => "rooms-card-image" %>
+        </div>
+        <div class="card-content">
+          <h6><%= room.room_name %></h6>
+          <p><%= to_currency_php(room.room_rate) %>/night</p>
+        </div>
+        <div class="card-action">
+          <%= link_to "Book", room, :class => "waves-effect waves-light btn red" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="center">
+  <%= will_paginate @rooms %>
+</div>

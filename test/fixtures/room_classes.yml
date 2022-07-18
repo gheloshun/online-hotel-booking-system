@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  room_class: MyString
+  room_info: MyText
+  bedroom_contents: MyString
+  balcony_contents: MyString
+  kitchen_contents: MyString
+  living_room_contents: MyString
+
+two:
+  room_class: MyString
+  room_info: MyText
+  bedroom_contents: MyString
+  balcony_contents: MyString
+  kitchen_contents: MyString
+  living_room_contents: MyString

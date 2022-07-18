@@ -1,0 +1,77 @@
+<% provide(:title, "Billing Statement") %>
+<div class="row">
+  <h5>Billing Information</h5>
+</div>
+<hr>
+<div class="row">
+  <div class="row">
+    <h5><%= @room.room_name %></h5>
+  </div>
+  <div class="col l6">
+    <%= image_tag @room.images.first, class: "billing-image" %>
+  </div>
+  <div class="col l6">
+    <div class="row">
+      <div class="col l6">
+        <%= to_currency_php(@booking.room_rate) %> x <%= @booking.number_of_night %> nights
+        <br>
+        Cleaning Fee
+        <br>
+        Service Fee
+        <hr>
+        Total Bill
+      </div>
+      <div class="col l6">
+        <%= to_currency_php(@booking.sub_total) %>
+        <br>
+        <%= to_currency_php(@booking.cleaning_fee) %>
+        <br>
+        <%= to_currency_php(@booking.service_fee) %>
+        <hr>
+        <%= to_currency_php(@booking.total_bill) %>
+      </div>
+    </div>
+    <div class="row">
+      <h6>Payment Option</h6>
+      <hr>
+      <ul class="collapsible">
+        <li>
+          <div class="collapsible-header">Bank (Over the Counter)</div>
+          <div class="collapsible-body">
+            <div class="row">
+              <div class="col l3">
+                <%= image_tag "bdo-icon.png", :class => "bank-logo" %>
+              </div>
+              <div class="col l9"><br>
+                <strong>Account Name: </strong>David Regency Hotel<br>
+                <strong>Account Number: </strong>1452-1019-2910-3576
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col l3">
+                <%= image_tag "bpi-logo.jpg", :class => "bank-logo" %>
+              </div>
+              <div class="col l9"><br>
+                <strong>Account Name: </strong>David Regency Hotel<br>
+                <strong>Account Number: </strong>1233-5595-9201-2925
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <%= form_for @booking, :method => :put do |f| %>
+                <%= f.submit "Reserve", class: "waves-effect waves-light btn red" %>
+              <% end %>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.collapsible').collapsible();
+  });
+</script>
